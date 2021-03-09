@@ -1,0 +1,53 @@
+--DDL
+USE PClinics;
+
+CREATE TABLE Clinica
+(
+	idClinica INT PRIMARY KEY IDENTITY
+	,Nome VARCHAR(200)
+	,Endereco VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Veterinario
+(
+	idVeterinario INT PRIMARY KEY IDENTITY
+	,idClinica INT FOREIGN KEY REFERENCES Clinica(idClinica)
+	,Nome VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Cliente
+(
+	idCliente INT PRIMARY KEY IDENTITY
+	,Nome VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE TipoPet
+(
+	idTipoPet INT PRIMARY KEY IDENTITY
+	,Descricao VARCHAR(200)
+);
+
+CREATE TABLE Raca
+(
+	idRaca INT PRIMARY KEY IDENTITY
+	,idTipoPet INT FOREIGN KEY REFERENCES TipoPet(idTipoPet)
+	,Nome VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Pet
+(
+	idPet INT PRIMARY KEY IDENTITY
+	,idRaca INT FOREIGN KEY REFERENCES Raca(idRaca)
+	,idCliente INT FOREIGN KEY REFERENCES Cliente(idCliente)
+	,Nome VARCHAR(200) NOT NULL
+	,Idade INT NOT NULL
+);
+
+CREATE TABLE Atendimento
+(
+	idAtendimento INT PRIMARY KEY IDENTITY
+	,idPet INT FOREIGN KEY REFERENCES Pet(idPet)
+	,idVeterinario INT FOREIGN KEY REFERENCES Veterinario(idVeterinario)
+	,Descricao VARCHAR(200) NOT NULL
+	,DataAtendimento SMALLDATETIME NOT NULL
+);
