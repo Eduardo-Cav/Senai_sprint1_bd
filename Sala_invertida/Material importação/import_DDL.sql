@@ -1,0 +1,14 @@
+CREATE DATABASE Pessoas;
+
+USE Pessoas;
+
+--DDL
+CREATE TABLE Pessoas
+(
+	idPessoas INT PRIMARY KEY IDENTITY
+	,Nome VARCHAR(100) NOT NULL
+	,Genero VARCHAR(100) NOT NULL
+	,CPF INT NOT NULL
+);
+
+
