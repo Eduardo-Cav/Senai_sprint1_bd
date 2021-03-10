@@ -15,9 +15,9 @@ CREATE TABLE Veterinario
 	,Nome VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE Cliente
+CREATE TABLE Dono
 (
-	idCliente INT PRIMARY KEY IDENTITY
+	idDono INT PRIMARY KEY IDENTITY
 	,Nome VARCHAR(200) NOT NULL
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE Pet
 (
 	idPet INT PRIMARY KEY IDENTITY
 	,idRaca INT FOREIGN KEY REFERENCES Raca(idRaca)
-	,idCliente INT FOREIGN KEY REFERENCES Cliente(idCliente)
+	,idDono INT FOREIGN KEY REFERENCES Dono(idDono)
 	,Nome VARCHAR(200) NOT NULL
 	,Idade INT NOT NULL
 );
@@ -49,5 +49,5 @@ CREATE TABLE Atendimento
 	,idPet INT FOREIGN KEY REFERENCES Pet(idPet)
 	,idVeterinario INT FOREIGN KEY REFERENCES Veterinario(idVeterinario)
 	,Descricao VARCHAR(200) NOT NULL
-	,DataAtendimento SMALLDATETIME NOT NULL
+	,DataAtendimento DATE NOT NULL
 );

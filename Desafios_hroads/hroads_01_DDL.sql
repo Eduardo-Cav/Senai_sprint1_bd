@@ -27,6 +27,12 @@ CREATE TABLE TipoHabilidades
 	,Nome VARCHAR(200) NOT NULL
 );
 
+CREATE TABLE Habilidades
+(
+	idHabilidades INT PRIMARY KEY IDENTITY
+	,idTH INT FOREIGN KEY REFERENCES TipoHabilidades(idTipoHabilidades)
+	,Nome VARCHAR(200) NOT NULL
+);
 
 CREATE TABLE ClassesHabilidades
 (
@@ -34,9 +40,3 @@ CREATE TABLE ClassesHabilidades
 	,idHabilidades INT FOREIGN KEY REFERENCES Habilidades(idHabilidades)
 );
 
-CREATE TABLE Habilidades
-(
-	idHabilidades INT PRIMARY KEY IDENTITY
-	,idTH INT FOREIGN KEY REFERENCES TipoHabilidades(idTipoHabilidades)
-	,Nome VARCHAR(200) NOT NULL
-);

@@ -10,13 +10,19 @@ CREATE TABLE Artista
 
 CREATE TABLE Album
 (
-	IdAlbum INT PRIMARY KEY IDENTITY
-	,IdArtista INT FOREIGN KEY REFERENCES Artista(idArtista)
+	idAlbum INT PRIMARY KEY IDENTITY
+	,idArtista INT FOREIGN KEY REFERENCES Artista(idArtista)
 	,Titulo VARCHAR(200) NOT NULL
-	,DataLancamento SMALLDATETIME NOT NULL
-	,QntdMinutos	INT NOT NULL
+	,DataLancamento DATE NOT NULL
+	,QntdMinutos INT NOT NULL
 	,Ativo BIT NOT NULL
 );
+
+ALTER TABLE Album
+DROP COLUMN DataLancamento;
+
+ALTER TABLE Album
+ADD DataLancamento DATE;
 
 CREATE TABLE Estilo
 (
